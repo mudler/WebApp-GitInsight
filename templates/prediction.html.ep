@@ -1,0 +1,152 @@
+% layout 'default' ;
+% title config('name'). ' - '.config('slogan').' ';
+% content_for head => begin
+%= asset 'app.js'
+<meta name="keywords" content="Index" />
+<style type="text/css">
+.chart {
+display: block;
+margin: auto;
+margin-top: 40px;
+}
+text {
+font-size: 11px;
+}
+rect {
+fill: none;
+}
+</style>
+% end
+<div class="col-md-12 panel panel-default" >
+    <h1 class="margin-base-vertical"><span class="mega-octicon octicon-logo-github"></span> <%=stash('username')%>'s contributions prediction</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+            If you are curious about how does it works, <a href="https://github.com/mudler/GitInsight" target="_new">click here</a>
+            </p>
+            <p>
+            The chart above show contribution from <span class="prediction"><%=stash('from')%></span> to <span class="prediction"><%=stash('to')%></span>.
+            Predictions starts in <span class="prediction"> <%=stash('prediction_start')%> </span>.
+            % if(stash('no_weekdays')==1){
+            Predictions are altered by <span class="prediction"> no week days flag </span>.
+            %}
+            The red border on the squares indicates your prediction of contributions for the next week
+            </p>
+            <a target="_new" href="/predict/img/<%=stash('username')%>.png">
+                <img src="/predict/img/<%=stash('username')%>.png" class="img-responsive">
+            </a>
+            <p>
+            <div class="contrib-legend" title="A summary of pull requests, issues opened, and commits to the default and gh-pages branches.">
+                <span>Less</span>
+                <ul class="legend">
+                    <li style="background-color: #eee"></li>
+                    <li style="background-color: #d6e685"></li>
+                    <li style="background-color: #8cc665"></li>
+                    <li style="background-color: #44a340"></li>
+                    <li style="background-color: #1e6823"></li>
+                </ul>
+                <span>More</span>
+            </div>
+            </p>
+            <p>
+            click on the image to enlarge
+            </p>
+            <br>
+        </div>
+    </div>
+    <div class="row">
+        <div id="treemap" class="col-md-12">
+            <h1 class="margin-base-vertical">Treemap of probabilities</h1>
+            <p>
+            click or option-click to descend or ascend
+            <select>
+                <option value="size">Size</option>
+                <option value="count">Count</option>
+            </select>
+            </p>
+            <p>
+            Click to zoom a region, the size of the blocks correspond to the associated "contribution label" probability to happen among the others, more big is the box, mostly is going to happen.
+            </p>
+        </div>
+        <script>
+        var map = {};
+        map[0] = " no contributions";
+        map[1] = " some contributions";
+        map[2] = " medium contributions";
+        map[3] = " medium-high contributions";
+        map[4] = " strong contributions";
+        var w = 1024 - 80,
+        h = 768 - 180,
+        x = d3.scale.linear().range([0, w]),
+        y = d3.scale.linear().range([0, h]),
+        color = d3.scale.category20c(),
+        root,
+        node;
+        var treemap = d3.layout.treemap()
+        .round(false)
+        .size([w, h])
+        .sticky(true)
+        .value(function(d) { return d.size; });
+        var svg = d3.select("#treemap").append("div")
+        .attr("class", "chart")
+        .style("width", w + "px")
+        .style("height", h + "px")
+        .append("svg:svg")
+        .attr("width", w)
+        .attr("height", h)
+        .append("svg:g")
+        .attr("transform", "translate(.5,.5)");
+        d3.json("<%="/json/".stash('username')%>.json", function(data) {
+        node = root = data;
+        var nodes = treemap.nodes(root)
+        .filter(function(d) { return !d.children; });
+        var cell = svg.selectAll("g")
+        .data(nodes)
+        .enter().append("svg:g")
+        .attr("class", "cell")
+        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+        .on("click", function(d) { return zoom(node == d.parent ? root : d.parent); });
+        cell.append("svg:rect")
+        .attr("width", function(d) { return d.dx - 1; })
+        .attr("height", function(d) { return d.dy - 1; })
+        .style("fill", function(d) { return color(d.parent.name); });
+        cell.append("svg:text")
+        .attr("x", function(d) { return d.dx / 2; })
+        .attr("y", function(d) { return d.dy / 2; })
+        .attr("dy", ".35em")
+        .attr("text-anchor", "middle")
+        .text(function(d) { return map[d.name] + ", " + moment(d.parent.name).format('LLLL'); })
+        .style("opacity", function(d) { d.w = this.getComputedTextLength(); return d.dx > d.w ? 1 : 0; });
+        d3.select(window).on("click", function() { zoom(root); });
+        d3.select("select").on("change", function() {
+        treemap.value(this.value == "size" ? size : count).nodes(root);
+        zoom(node);
+        });
+        });
+        function size(d) {
+        return d.size;
+        }
+        function count(d) {
+        return 1;
+        }
+        function zoom(d) {
+        var kx = w / d.dx, ky = h / d.dy;
+        x.domain([d.x, d.x + d.dx]);
+        y.domain([d.y, d.y + d.dy]);
+        var t = svg.selectAll("g.cell").transition()
+        .duration(d3.event.altKey ? 7500 : 750)
+        .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+        t.select("rect")
+        .attr("width", function(d) { return kx * d.dx - 1; })
+        .attr("height", function(d) { return ky * d.dy - 1; })
+        t.select("text")
+        .attr("x", function(d) { return kx * d.dx / 2; })
+        .attr("y", function(d) { return ky * d.dy / 2; })
+        .style("opacity", function(d) { return kx * d.dx > d.w ? 1 : 0; });
+        node = d;
+        d3.event.stopPropagation();
+        }
+        </script>
+        <br>
+    </div>
+</div>

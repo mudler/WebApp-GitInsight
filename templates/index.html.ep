@@ -1,0 +1,54 @@
+% layout 'default' ;
+% title config('name'). ' - '.config('slogan').' ';
+% content_for head => begin
+<meta name="keywords" content="Index" />
+% end
+      <div class="col-md-6 col-md-offset-3 panel panel-default" >
+
+<h1 class="margin-base-vertical">Have you ever wondered the future of your <span class="mega-octicon octicon-logo-github"></span> contributions?</h1>
+<p>
+You can generate your next week prediction by entering your username down here.
+</p>
+<p>
+If you are curious about how does it works, <a href="https://github.com/mudler/GitInsight" target="_new">click here</a>
+</p>
+<p>
+I want to know, what i'll do the next week?
+</p>
+%= form_for 'predict', method => 'post' , class=> "margin-base-vertical", begin
+  <p class="input-group">
+  <span class="input-group-addon"><span class="octicon octicon-octoface"></span></span>
+  <input type="text" class="form-control input-lg" name="username" placeholder="github-username" />
+  </p>
+<div class="col-md-6 col-md-offset-3  panel " ><br>
+<p>
+Those fields below are optional and changes your predictions </p>
+<!-- No days of the week checkbox -->
+<p class="input-group">
+
+    <label class="checkbox" for="checkboxes-0">
+      <input name="no_weekdays" id="checkboxes-0" value="No days of the week" type="checkbox">
+      No days of the week
+    </label>
+</p>
+
+<!-- Left cutoff-->
+<p class="input-group">
+  <span class="input-group-addon"><span class="glyphicon glyphicon-fast-backward"></span></span>
+      <input id="left_cutoff" name="left_cutoff" class="form-control input-md" placeholder="Days to cut off from left" type="text" />
+</p>
+
+<!-- Left cutoff-->
+<p class="input-group">
+  <span class="input-group-addon"><span class="glyphicon glyphicon-fast-forward"></span></span>
+      <input id="cutoff_offset" name="cutoff_offset" class="form-control input-md" placeholder="cut off offset" type="text" />
+</p>
+
+
+  <p class="help-block text-center"><small>No authentication requested. No special permissions, just your stats. </small></p>
+  <p class="text-center">
+  <button type="submit" class="btn btn-success btn-lg">Predict!</button>
+  </p>
+  </div>
+  %end;
+  </div>

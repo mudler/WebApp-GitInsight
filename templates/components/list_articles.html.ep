@@ -1,0 +1,57 @@
+<div class="articles">
+% use POSIX;
+
+% my $articles_per_row=4;
+
+% my $rows= ceil((scalar @$articles)/$articles_per_row);
+% my $start=0;
+% my @items=@$articles;
+% for(my $i = 1; $i <= $rows; $i++) {
+
+
+
+% if ($i==4){
+<div class="row">
+	<div class="col-md-3">
+		<center>
+		<!--JuicyAds v2.0-->
+		<iframe border=0 frameborder=0 marginheight=0 marginwidth=0 width=258 height=258 scrolling=no allowtransparency=true src=http://adserver.juicyads.com/adshow.php?adzone=261948></iframe>
+		<!--JuicyAds END-->
+		</center>
+	</div>
+	<div class="col-md-3">
+		<center>
+		<!--JuicyAds v2.0-->
+		<iframe border=0 frameborder=0 marginheight=0 marginwidth=0 width=258 height=258 scrolling=no allowtransparency=true src=http://adserver.juicyads.com/adshow.php?adzone=261950></iframe>
+		<!--JuicyAds END-->
+		</center>
+	</div>
+	<div class="col-md-3">
+		<center>
+		<!--JuicyAds v2.0-->
+		<iframe border=0 frameborder=0 marginheight=0 marginwidth=0 width=258 height=258 scrolling=no allowtransparency=true src=http://adserver.juicyads.com/adshow.php?adzone=261953></iframe>
+		<!--JuicyAds END-->
+		</center>
+	</div>
+	<div class="col-md-3">
+		<center>
+		<!--JuicyAds v2.0-->
+		<iframe border=0 frameborder=0 marginheight=0 marginwidth=0 width=258 height=258 scrolling=no allowtransparency=true src=http://adserver.juicyads.com/adshow.php?adzone=261954></iframe>
+		<!--JuicyAds END-->
+		</center>
+	</div>
+</div>
+%}  
+
+
+<div class="row">
+% foreach my $article (@items[ $start .. $start+($articles_per_row-1) ]) {
+% $start++;
+%=  include '/components/show_article', article => $article, single => $single
+% last if !$items[$start];
+% }
+</div>
+
+% }
+
+</div>
