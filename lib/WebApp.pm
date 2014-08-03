@@ -7,6 +7,9 @@ use Mojo::Base 'Mojolicious';
 use Mojo::Loader;
 use IO::Compress::Gzip 'gzip';
 use Mojolicious::Plugin::BootstrapAlerts;
+use Mojolicious::Plugin::StaticCompressor;
+use Mojolicious::Plugin::Bootstrap3;
+use Mojolicious::Plugin::AssetPack;
 
 sub startup {
     my $app = shift;
@@ -30,7 +33,7 @@ sub startup {
     # script.js and extern.js are bundled in the app.js asset
     $app->asset(
         'app.js' => 'http://d3js.org/d3.v3.min.js',
-        'http://momentjs.com/downloads/moment-with-langs.min.js',
+
         '/js/script.js'
     );
     $app->asset(

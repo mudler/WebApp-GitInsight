@@ -52,3 +52,20 @@
   width:10px;
   height:10px
 }
+
+.contrib-exp{
+  font-size:11px;
+  color:#999;
+}
+
+.contrib-exp .legend{
+  list-style:none;
+  margin:0 5px;
+  position:relative;
+  bottom:-1px
+}
+
+.contrib-exp .legend li span{
+  width:10px;
+  height:10px
+}
