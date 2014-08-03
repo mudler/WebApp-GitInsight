@@ -38,7 +38,7 @@ sub startup {
     );
     $app->asset(
         'style.css' => '/css/style.css',
-        '//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css',
+        'http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css',
         '/octicons/octicons.css'
     );
 
