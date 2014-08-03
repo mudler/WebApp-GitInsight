@@ -1,6 +1,8 @@
 % layout 'default';
-% title config('name') . ' - NOT FOUND!';
+% title config('name') . ' - whooops!';
 <div class="col-md-6 col-md-offset-3 panel panel-default" >
     <h1>Whoops!</h1>
-    <p>I couldn't find what you were looking for. Sorry!</p>
+    <img src="http://files.sharenator.com/121256xcitefun_error_404_1-s600x398-220298.jpg" class="img-responsive">
+    <p>I couldn't find what you were looking for! The admins was notified, don't worry!</p>
+
 </div>
