@@ -58,6 +58,22 @@ fill: none;
             <p>
             If you are curious about how does it works, <a href="https://github.com/mudler/GitInsight" target="_new">click here</a>
             </p>
+            % if(stash('no_weekdays')==1){
+            % foreach my $k (keys %{stash('stats')}){
+            <p>
+<span class="prediction"> Label : <%=$k%> </span> has keys <%=stash('stats')->{$k}%> to happen over all
+            </p>
+            %}
+            %} else {
+            % foreach my $k (keys %{stash('stats')}){
+            <p>
+            On the day <%=$k%> of the week:
+            % foreach my $l (keys %{stash('stats')->{$k}}){
+<span class="prediction"> Label : <%=$l%> </span> has keys <%=stash('stats')->{$k}->{$l}%> to happen over all
+            %}
+            </p>
+            %}
+            %}
             <br>
         </div>
     </div>
@@ -122,7 +138,7 @@ fill: none;
         .attr("y", function(d) { return d.dy / 2; })
         .attr("dy", ".35em")
         .attr("text-anchor", "middle")
-        .text(function(d) { return map[d.name] + ", " + d.parent.name; })
+        .text(function(d) { return d.parent.name+": "+map[d.name] ; })
         .style("opacity", function(d) { d.w = this.getComputedTextLength(); return d.dx > d.w ? 1 : 0; });
         d3.select(window).on("click", function() { zoom(root); });
         d3.select("select").on("change", function() {

@@ -21,7 +21,8 @@ sub register {
                 : 0,
                 cutoff_offset => !looks_like_number( $_[3] ) ? 0
                 : $_[3] >= 0 ? $_[3]
-                : 0
+                : 0,
+                statistics => 1
             );
             $Insight->contrib_calendar( $_[0] );
             $Insight->process;
