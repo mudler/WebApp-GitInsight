@@ -68,9 +68,11 @@ fill: none;
             %} else {
             % foreach my $k (keys %{stash('stats')}){
             <h1 class="margin-base-vertical">Label frequency percentuage on <%=$k%></h1>
+            <p>
             % foreach my $l (sort {$a<=> $b} keys %{stash('stats')->{$k}}){
                         <div class="daystat" data-dimension="250" data-text="<%=stash('stats')->{$k}->{$l}*100%>%" data-info="Label : <%=$l%>" data-width="30" data-fontsize="38" data-percent="<%=stash('stats')->{$k}->{$l}*100%>" data-fgcolor="#61a9dc" data-bgcolor="#eee" data-fill="#ddd" data-total="200" data-part="<%=stash('stats')->{$k}->{$l}*100%>" data-icon="long-arrow-up" data-icon-size="28" data-icon-color="#fff"></div>
             %}
+            </p>
             %}
             %}
             <br>
