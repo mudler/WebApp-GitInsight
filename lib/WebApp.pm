@@ -33,7 +33,7 @@ sub startup {
     # script.js and extern.js are bundled in the app.js asset
     $app->asset(
         'app.js' => 'http://d3js.org/d3.v3.min.js',
-        'https://raw.githubusercontent.com/pguso/jquery-plugin-circliful/master/js/jquery.circliful.min.js',
+        '/js/circ.js',
         '/js/script.js'
     );
     $app->asset(
