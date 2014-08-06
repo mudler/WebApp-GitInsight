@@ -60,18 +60,18 @@ fill: none;
             </p>
             % if(stash('no_weekdays')==1){
             <h1 class="margin-base-vertical">Label frequency percentuage</h1>
-            <div class="col-md-12 panel panel-default" >
+            <div class="col-md-12" >
             <div class="row">
             <center>
             % foreach my $k (sort {$a<=> $b} keys %{stash('stats')}){
-            <div class="daystat" data-dimension="250" data-text="<%=stash('stats')->{$k}*100%>%" data-info="Label : <%=$k%>" data-width="30" data-fontsize="38" data-percent="<%=stash('stats')->{$k}*100%>" data-fgcolor="#61a9dc" data-bgcolor="#eee" data-fill="#8cc665" data-total="200" data-part="<%=stash('stats')->{$k}*100%>" data-icon="long-arrow-up" data-icon-size="28" data-icon-color="#fff"></div>
+            <div class="daystat" data-dimension="250" data-text="<%=stash('stats')->{$k}*100%>%" data-info="Label : <%=$k%>" data-width="30" data-fontsize="38" data-percent="<%=stash('stats')->{$k}*100%>" data-fgcolor="#44a340" data-bgcolor="#eee" data-fill="#d6e685" data-total="200" data-part="<%=stash('stats')->{$k}*100%>" data-icon="long-arrow-up" data-icon-size="28" data-icon-color="#fff"></div>
             %}
 
             </center>
 
             </div>            </div>
             %} else {
-            <div class="col-md-12 panel panel-default" >
+            <div class="col-md-12" >
             % foreach my $k (keys %{stash('stats')}){
              <div class="row">
             <h1 class="margin-base-vertical">Label frequency percentuage on <%=$k%></h1></div>
@@ -79,7 +79,7 @@ fill: none;
                         <center>
 
             % foreach my $l (sort {$a<=> $b} keys %{stash('stats')->{$k}}){
-                        <div class="daystat" data-dimension="250" data-text="<%=stash('stats')->{$k}->{$l}*100%>%" data-info="Label : <%=$l%>" data-width="30" data-fontsize="38" data-percent="<%=stash('stats')->{$k}->{$l}*100%>" data-fgcolor="#61a9dc" data-bgcolor="#eee" data-fill="#8cc665" data-total="200" data-part="<%=stash('stats')->{$k}->{$l}*100%>" data-icon="long-arrow-up" data-icon-size="28" data-icon-color="#fff"></div>
+                        <div class="daystat" data-dimension="250" data-text="<%=stash('stats')->{$k}->{$l}*100%>%" data-info="Label : <%=$l%>" data-width="30" data-fontsize="38" data-percent="<%=stash('stats')->{$k}->{$l}*100%>" data-fgcolor="#44a340" data-bgcolor="#eee" data-fill="#d6e685" data-total="200" data-part="<%=stash('stats')->{$k}->{$l}*100%>" data-icon="long-arrow-up" data-icon-size="28" data-icon-color="#fff"></div>
             %}
                         </center>
 
