@@ -59,15 +59,18 @@ fill: none;
             If you are curious about how does it works, <a href="https://github.com/mudler/GitInsight" target="_new">click here</a>
             </p>
             % if(stash('no_weekdays')==1){
+            <h1 class="margin-base-vertical">Label frequency percentuage</h1>
+            <center>
             % foreach my $k (sort {$a<=> $b} keys %{stash('stats')}){
             <div class="daystat" data-dimension="250" data-text="<%=stash('stats')->{$k}*100%>%" data-info="Label : <%=$k%>" data-width="30" data-fontsize="38" data-percent="<%=stash('stats')->{$k}*100%>" data-fgcolor="#61a9dc" data-bgcolor="#eee" data-fill="#ddd" data-total="200" data-part="<%=stash('stats')->{$k}*100%>" data-icon="long-arrow-up" data-icon-size="28" data-icon-color="#fff"></div>
             %}
+            </center>
             %} else {
             % foreach my $k (keys %{stash('stats')}){
             <p>
-            On the day <%=$k%> of the week:
+            <h1 class="margin-base-vertical">Label frequency percentuage on <%=$k%></h1>
             % foreach my $l (keys %{stash('stats')->{$k}}){
-<span class="prediction"> Label : <%=$l%> </span> has keys <%=stash('stats')->{$k}->{$l}%> to happen over all
+                        <div class="daystat" data-dimension="250" data-text="<%=stash('stats')->{$k}->{$l}*100%>%" data-info="Label : <%=$l%>" data-width="30" data-fontsize="38" data-percent="<%=stash('stats')->{$k}->{$l}*100%>" data-fgcolor="#61a9dc" data-bgcolor="#eee" data-fill="#ddd" data-total="200" data-part="<%=stash('stats')->{$k}->{$l}*100%>" data-icon="long-arrow-up" data-icon-size="28" data-icon-color="#fff"></div>
             %}
             </p>
             %}
