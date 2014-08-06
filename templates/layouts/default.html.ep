@@ -28,7 +28,8 @@
 
 
 
-    %= asset "web.js"
+    %= asset "libs.js"
+    %= asset "scripts.js"
    % # asset "app.js"
 
 </body>

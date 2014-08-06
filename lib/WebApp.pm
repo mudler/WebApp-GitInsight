@@ -32,11 +32,11 @@ sub startup {
     ################# Assets definitions
     # script.js and extern.js are bundled in the app.js asset
     $app->asset(
-        'app.js' => 'http://code.jquery.com/jquery-2.1.1.min.js',
+        'libs.js' => 'http://code.jquery.com/jquery-2.1.1.min.js',
         'http://d3js.org/d3.v3.min.js',
         '/js/circ.js',
-        '/js/script.js'
     );
+    $app->asset( 'scripts.js' => '/js/script.js' );
     $app->asset(
         'style.css' => '/css/style.css',
         'http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css',
