@@ -40,7 +40,7 @@ sub startup {
     $app->asset(
         'style.css' => '/css/style.css',
         'http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css',
-        '/css/circliful.css'
+        '/css/circful.css'
 
     );
 
