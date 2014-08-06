@@ -1,8 +1,6 @@
 % layout 'default' ;
 % title config('name'). ' - '.config('slogan').' ';
 % content_for head => begin
-%= asset 'app.js'
-        <script src="http://momentjs.com/downloads/moment-with-langs.min.js"></script>
 <meta name="keywords" content="Index" />
 <style type="text/css">
 .chart {
