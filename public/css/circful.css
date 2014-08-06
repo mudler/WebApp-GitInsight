@@ -18,3 +18,7 @@
     position: relative;
     bottom: 4px;
 }
+
+.daystat{
+    float:left;
+}
