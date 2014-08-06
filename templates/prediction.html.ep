@@ -59,10 +59,8 @@ fill: none;
             If you are curious about how does it works, <a href="https://github.com/mudler/GitInsight" target="_new">click here</a>
             </p>
             % if(stash('no_weekdays')==1){
-            % foreach my $k (keys %{stash('stats')}){
-            <p>
-<span class="prediction"> Label : <%=$k%> </span> has keys <%=stash('stats')->{$k}%> to happen over all
-            </p>
+            % foreach my $k (sort {$a<=> $b} keys %{stash('stats')}){
+            <div class="daystat" data-dimension="250" data-text="<%=stash('stats')->{$k}*100%>%" data-info="Label : <%=$k%>" data-width="30" data-fontsize="38" data-percent="<%=stash('stats')->{$k}*100%>" data-fgcolor="#61a9dc" data-bgcolor="#eee" data-fill="#ddd" data-total="200" data-part="<%=stash('stats')->{$k}*100%>" data-icon="long-arrow-up" data-icon-size="28" data-icon-color="#fff"></div>
             %}
             %} else {
             % foreach my $k (keys %{stash('stats')}){
