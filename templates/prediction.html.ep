@@ -57,6 +57,12 @@ fill: none;
             <p>
             If you are curious about how does it works, <a href="https://github.com/mudler/GitInsight" target="_new">click here</a>
             </p>
+
+                        % foreach my $l (sort {$a<=> $b} keys %{stash('labels')} ){
+                      <p>  <%=$l%> appear to be  <%=stash('labels')->{$l}%>      </p>
+                      %}
+
+
             % if(stash('no_weekdays')==1){
             <h1 class="margin-base-vertical">Label frequency percentuage</h1>
             <div class="col-md-12" >

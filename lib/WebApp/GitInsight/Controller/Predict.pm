@@ -18,6 +18,7 @@ sub insight {
         from             => $Insight->start_day,
         to               => $Insight->last_day,
         stats            => $Insight->{stats},
+        labels           => $Insight->{steps},
         prediction_start => $Insight->prediction_start_day,
         no_weekdays      => $wd
     );
