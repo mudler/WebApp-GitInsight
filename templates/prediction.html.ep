@@ -18,7 +18,8 @@ fill: none;
 % end
 % my @wday = qw/Mon Tue Wed Thu Fri Sat Sun/;
 <div class="col-md-12 panel panel-default" >
-    <h1 class="margin-base-vertical"><span class="mega-octicon octicon-logo-github"></span> <%=stash('username')%>'s contributions prediction</h1>
+    <h1 class="margin-base-vertical"><img src="<%=stash('avatar')%>" width=130 class="img-responsive">
+<span class="mega-octicon octicon-logo-github"></span> <a href="<%=stash('profile_page')%>" target="_new"> <%=stash('username')%></a>'s contributions prediction</h1>
     <div class="row">
         <div class="col-md-12">
             <p>
