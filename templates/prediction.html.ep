@@ -16,6 +16,7 @@ fill: none;
 }
 </style>
 % end
+% my @wday = qw/Mon Tue Wed Thu Fri Sat Sun/;
 <div class="col-md-12 panel panel-default" >
     <h1 class="margin-base-vertical"><span class="mega-octicon octicon-logo-github"></span> <%=stash('username')%>'s contributions prediction</h1>
     <div class="row">
@@ -70,7 +71,7 @@ fill: none;
             </div>            </div>
             %} else {
             <div class="col-md-12" >
-            % foreach my $k (keys %{stash('stats')}){
+            % foreach my $k (@wdays){
              <div class="row">
             <h1 class="margin-base-vertical">Label frequency percentuage on <%=$k%></h1></div>
             <div class="row">
