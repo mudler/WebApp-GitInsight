@@ -71,7 +71,7 @@ fill: none;
             </div>            </div>
             %} else {
             <div class="col-md-12" >
-            % foreach my $k (@wdays){
+            % foreach my $k (@wday){
              <div class="row">
             <h1 class="margin-base-vertical">Label frequency percentuage on <%=$k%></h1></div>
             <div class="row">
