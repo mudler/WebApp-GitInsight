@@ -38,15 +38,16 @@ Those fields below are optional and changes your predictions </p>
 <p>
 Use the slider below to select a range of dates to limit the prediction
 </p>
-
+<div class="col-md-12">
+<div class="row">
 <p class="input-group">
   <!-- <span class="input-group-addon"><span class="glyphicon glyphicon-fast-backward"></span></span> -->
     <input data-slider-id="GC" id="G"  type="text" class="span2 slider" value="" data-slider-min="0" data-slider-max="365" data-slider-step="1" data-slider-value="0,0" data-slider-orientation="horizontal" data-slider-selection="after"data-slider-tooltip="show" name="cutoff">
   <!-- <span class="input-group-addon"><span class="glyphicon glyphicon-fast-forward"></span></span> -->
 </p>
 
-
-
+</div>
+</div>
 
   </div>
   </div>
