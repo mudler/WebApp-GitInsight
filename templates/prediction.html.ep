@@ -52,7 +52,7 @@ fill: none;
                 </ul>
                 <span>maximum of <%=stash('labels')->{$l}%> contributions</span>
             </div>
-
+</div>
                       %}
                       </div>
 
