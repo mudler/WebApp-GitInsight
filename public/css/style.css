@@ -62,6 +62,7 @@
 .contrib-exp{
   font-size:11px;
   color:#999;
+  float:left;
 }
 
 .contrib-exp .legend{
