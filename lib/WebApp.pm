@@ -35,12 +35,14 @@ sub startup {
         'libs.js' => 'http://d3js.org/d3.v3.min.js',
         'http://code.jquery.com/jquery-2.1.1.min.js',
         '/js/circ.js',
+        '/js/slider.js'
     );
     $app->asset( 'scripts.js' => '/js/script.js' );
     $app->asset(
         'style.css' => '/css/style.css',
         'http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css',
-        '/css/circful.css'
+        '/css/circful.css',
+        '/css/slider.css'
 
     );
 

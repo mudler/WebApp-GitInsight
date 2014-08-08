@@ -7,6 +7,7 @@ use JSON;
 sub insight {
     my $self     = shift;
     my $username = $self->param("username");
+    say "Cutoff range:".$self->param("cutoff");
     my $wd       = 0;
     $wd = 1 if $self->param("no_weekdays");
     my $Insight = $self->app->insight(

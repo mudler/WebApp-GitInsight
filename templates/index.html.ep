@@ -35,6 +35,12 @@ Those fields below are optional and changes your predictions </p>
     </label>
 </p>
 
+<p>
+
+
+    <input type="text" class="span2 slider" value="" data-slider-min="0" data-slider-max="365" data-slider-step="1" data-slider-value="0,0" data-slider-orientation="vertical" data-slider-selection="after"data-slider-tooltip="hide" name="cutoff">
+</p>
+
 <!-- Left cutoff-->
 <p class="input-group">
   <span class="input-group-addon"><span class="glyphicon glyphicon-fast-backward"></span></span>
