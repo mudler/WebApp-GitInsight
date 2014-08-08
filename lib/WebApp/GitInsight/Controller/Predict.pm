@@ -7,7 +7,6 @@ use JSON;
 sub insight {
     my $self     = shift;
     my $username = $self->param("username");
-    say "Cutoff range:".$self->param("cutoff");
     my ($left_cutoff,$right_cutoff) =split(/,/,$self->param("cutoff"));
     $right_cutoff=$right_cutoff-$left_cutoff;
     my $wd       = 0;

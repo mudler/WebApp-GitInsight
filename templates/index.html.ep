@@ -36,22 +36,15 @@ Those fields below are optional and changes your predictions </p>
 </p>
 
 <p>
-
-
-    <input type="text" class="span2 slider" value="" data-slider-min="0" data-slider-max="365" data-slider-step="1" data-slider-value="0,0" data-slider-orientation="horizontal" data-slider-selection="after"data-slider-tooltip="show" name="cutoff">
+Use the slider below to select a range of dates to limit the prediction
 </p>
 
-<!-- Left cutoff-->
 <p class="input-group">
   <span class="input-group-addon"><span class="glyphicon glyphicon-fast-backward"></span></span>
-      <input id="left_cutoff" name="left_cutoff" class="form-control input-md" placeholder="Days to cut off from left" type="text" />
+    <input type="text" class="span2 slider" value="" data-slider-min="0" data-slider-max="365" data-slider-step="1" data-slider-value="0,0" data-slider-orientation="horizontal" data-slider-selection="after"data-slider-tooltip="show" name="cutoff">
+  <span class="input-group-addon"><span class="glyphicon glyphicon-fast-forward"></span></span>
 </p>
 
-<!-- Left cutoff-->
-<p class="input-group">
-  <span class="input-group-addon"><span class="glyphicon glyphicon-fast-forward"></span></span>
-      <input id="cutoff_offset" name="cutoff_offset" class="form-control input-md" placeholder="cut off offset" type="text" />
-</p>
 
 
 
