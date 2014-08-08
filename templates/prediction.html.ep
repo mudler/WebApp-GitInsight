@@ -39,25 +39,6 @@ fill: none;
             <a target="_new" href="/predict/img/<%=stash('username')%>.png">
                 <img src="/predict/img/<%=stash('username')%>.png" class="img-responsive">
             </a>
-
-
-<div class="col-md-12">
-                        % foreach my $l (sort {$a<=> $b} keys %{stash('labels')} ){
-                        % my $color= $l ==0 ? '#eee' : $l==1 ? '#d6e685' : $l==2? '#8cc665' : $l==3 ? '#44a340' : '#1e6823';
-                        <div class="row">
-
- <div class="contrib-legend">
-                <ul class="legend">
-                    <li style="background-color: <%=$color%>"></li>
-                </ul>
-                <span>maximum of <%=stash('labels')->{$l}%> contributions</span>
-            </div>
-</div>
-                      %}
-                      </div>
-
-
-
             <p>
             <div class="contrib-legend" title="A summary of pull requests, issues opened, and commits to the default and gh-pages branches.">
                 <span>Less</span>
@@ -70,6 +51,24 @@ fill: none;
                 </ul>
                 <span>More</span>
             </div>
+
+<div class="col-md-12">
+                        <div class="row">
+
+                        % foreach my $l (sort {$a<=> $b} keys %{stash('labels')} ){
+                        % my $color= $l ==0 ? '#eee' : $l==1 ? '#d6e685' : $l==2? '#8cc665' : $l==3 ? '#44a340' : '#1e6823';
+
+ <div class="contrib-exp">
+                <ul class="legend">
+                    <li style="background-color: <%=$color%>"></li>
+                </ul>
+                <span>maximum of <%=stash('labels')->{$l}%> contributions</span>
+            </div>
+                      %}
+                      </div>
+
+                      </div>
+
             </p>
             <p>
             click on the image to enlarge
