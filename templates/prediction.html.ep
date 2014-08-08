@@ -47,7 +47,9 @@ fill: none;
                 </ul>
                 <span>More</span>
             </div>
+
 <div class="col-md-12">
+<div class="row"><br></div>
 <div class="row">
             <a target="_new" href="/predict/img/<%=stash('username')%>.png">
                 <img src="/predict/img/<%=stash('username')%>.png" class="img-responsive">
@@ -65,7 +67,7 @@ fill: none;
                 <ul class="legend">
                     <li style="background-color: <%=$color%>"></li>
                 </ul>
-                <span>maximum of <%=stash('labels')->{$l}%> contributions</span>
+                <span><%=stash('labels')->{$l}%> or less contributions</span>
             </div>
                       %}
                       </div>
