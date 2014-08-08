@@ -36,7 +36,7 @@ fill: none;
             <p>
             The red border on the squares indicates your prediction of contributions for the next week
             </p>
-                      <div class="contrib-legend" title="A summary of pull requests, issues opened, and commits to the default and gh-pages branches.">
+            <div class="contrib-legend" title="A summary of pull requests, issues opened, and commits to the default and gh-pages branches.">
                 <span>Less</span>
                 <ul class="legend">
                     <li style="background-color: #eee"></li>
@@ -47,10 +47,12 @@ fill: none;
                 </ul>
                 <span>More</span>
             </div>
-
+<div class="col-md-12">
+<div class="row">
             <a target="_new" href="/predict/img/<%=stash('username')%>.png">
                 <img src="/predict/img/<%=stash('username')%>.png" class="img-responsive">
             </a>
+            </div></div>
             <p>
 
 <div class="col-md-12">
