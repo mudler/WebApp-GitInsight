@@ -46,7 +46,7 @@ fill: none;
                         % my $color= $l ==0 ? '#eee' : $l==1 ? '#d6e685' : $l==2? '#8cc665' : $l==3 ? '#44a340' : '#1e6823';
                         <div class="row">
 
- <div class="contrib-exp">
+ <div class="contrib-legend">
                 <ul class="legend">
                     <li style="background-color: <%=$color%>"></li>
                 </ul>
