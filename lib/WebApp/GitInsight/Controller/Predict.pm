@@ -8,12 +8,14 @@ sub insight {
     my $self     = shift;
     my $username = $self->param("username");
     say "Cutoff range:".$self->param("cutoff");
+    my ($left_cutoff,$right_cutoff) =split(/,/,$self->param("cutoff"));
+    $right_cutoff=$right_cutoff-$left_cutoff;
     my $wd       = 0;
     $wd = 1 if $self->param("no_weekdays");
     my $Insight = $self->app->insight(
         $username, $wd,
-        $self->param("left_cutoff"),
-        $self->param("cutoff_offset")
+        $left_cutoff,
+        $right_cutoff
     );
 
     my $user_data = decode_json $self->ua->get(
