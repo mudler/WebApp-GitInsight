@@ -59,9 +59,20 @@ fill: none;
             If you are curious about how does it works, <a href="https://github.com/mudler/GitInsight" target="_new">click here</a>
             </p>
 
+<div class="col-md-12">
                         % foreach my $l (sort {$a<=> $b} keys %{stash('labels')} ){
-                      <p>  <%=$l%> appear to be  <%=stash('labels')->{$l}%>      </p>
+                        % my $color= $l ==0 ? '#eee' : $l==1 ? '#d6e685' : $l==2? '#8cc665' : $l==3 ? '#44a340' : '#1e6823';
+                        <div class="row">
+
+ <div class="contrib-legend">
+                <ul class="legend">
+                    <li style="background-color: <%=$color%>"></li>
+                </ul>
+                <span>maximum of <%=stash('labels')->{$l}%> contributions</span>
+            </div>
+
                       %}
+                      </div>
 
 
             % if(stash('no_weekdays')==1){
