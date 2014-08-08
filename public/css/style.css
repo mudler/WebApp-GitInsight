@@ -76,3 +76,10 @@
   width:10px;
   height:10px
 }
+
+#GC .slider-selection {
+  background: #428041;
+}
+#GC .slider-handle {
+  background: green;
+}

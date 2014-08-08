@@ -41,7 +41,7 @@ Use the slider below to select a range of dates to limit the prediction
 
 <p class="input-group">
   <span class="input-group-addon"><span class="glyphicon glyphicon-fast-backward"></span></span>
-    <input type="text" class="span2 slider" value="" data-slider-min="0" data-slider-max="365" data-slider-step="1" data-slider-value="0,0" data-slider-orientation="horizontal" data-slider-selection="after"data-slider-tooltip="show" name="cutoff">
+    <input id="GC" type="text" class="span2 slider" value="" data-slider-min="0" data-slider-max="365" data-slider-step="1" data-slider-value="0,0" data-slider-orientation="horizontal" data-slider-selection="after"data-slider-tooltip="show" name="cutoff">
   <span class="input-group-addon"><span class="glyphicon glyphicon-fast-forward"></span></span>
 </p>
 
