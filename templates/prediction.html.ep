@@ -67,7 +67,14 @@ fill: none;
                 <ul class="legend">
                     <li style="background-color: <%=$color%>"></li>
                 </ul>
+                %if($l==0) {
+<span><%=stash('labels')->{$l}%> contributions</span>
+                % } elsif($l==4){
+                                <span>more than <%=stash('labels')->{$l}%> contributions</span>
+                %} else {
                 <span><%=stash('labels')->{$l}%> or less contributions</span>
+
+                %}
             </div>
                       %}
                       </div>
