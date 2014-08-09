@@ -88,7 +88,24 @@ fill: none;
             <p>
             If you are curious about how does it works, <a href="https://github.com/mudler/GitInsight" target="_new">click here</a>
             </p>
+            % foreach my $prediction (@{stash('predictions')}){
+         <h1 class="margin-base-vertical">Prediction probability percentuage for <%=$prediction->[0]%> (<%=$prediction->[2]%>)</h1>
+            <div class="col-md-12" >
+            <div class="row">
+            <center>
 
+            % for my $l(0..(scalar (@{$prediction->[3]}))-1){
+            % #my $color= $l ==0 ? '#eee' : $l==1 ? '#d6e685' : $l==2? '#8cc665' : $l==3 ? '#44a340' : '#1e6823';
+            % my $label =  ($l==0) ? stash('labels')->{$l}. " contributions " : ($l==4)?  stash('labels')->{$l}." or more" : stash('labels')->{$l}." or less contributions";
+            %my $gauge=$prediction->[3]->[$l]*100 < 25 ? "#FFCC00" : $prediction->[3]->[$l]*100 < 50 ? "#FF9900" : $prediction->[3]->[$l]*100  < 75 ? "#FF6600" : "#FF3300";
+
+            <div class="daystat" data-dimension="250" data-text="<%=sprintf "%.2f", $prediction->[3]->[$l]*100%>%" data-info="<%=$label%>" data-width="30" data-fontsize="38" data-percent="<%=sprintf "%.2f", $prediction->[3]->[$l]*100%>" data-fgcolor="<%=$gauge%>" data-bgcolor="#eee" data-fill="#eee" data-total="100" data-part="<%=sprintf "%.2f", $prediction->[3]->[$l]*100%>" data-icon="long-arrow-up" data-icon-size="28" data-icon-color="#fff"></div>
+             %}
+
+            </center>
+
+            </div>            </div>
+              %}
 
             % if(stash('no_weekdays')==1){
             <h1 class="margin-base-vertical">Label frequency percentuage</h1>

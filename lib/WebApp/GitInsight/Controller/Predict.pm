@@ -28,6 +28,7 @@ sub insight {
         avatar           => $user_data->{avatar_url},
         stats            => $Insight->{stats},
         labels           => $Insight->{steps},
+        predictions => $Insight->{result},
         prediction_start => $Insight->prediction_start_day,
         no_weekdays      => $wd
     );
