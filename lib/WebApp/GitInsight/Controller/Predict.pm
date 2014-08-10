@@ -7,7 +7,7 @@ use JSON;
 sub insight {
     my $self     = shift;
     my $username = $self->param("username");
-    my ($left_cutoff,$right_cutoff) =split(/,/,$self->param("cutoff"));
+    my ($left_cutoff,$right_cutoff) =split(/,/,$self->param("cutoff")|| "0,0");
     $right_cutoff=$right_cutoff-$left_cutoff;
     my $wd       = 0;
     $wd = 1 if $self->param("no_weekdays");
