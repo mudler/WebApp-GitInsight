@@ -3,58 +3,53 @@
 % content_for head => begin
 <meta name="keywords" content="Index" />
 % end
-      <div class="col-md-6 col-md-offset-3 panel panel-default" >
-
-<h1 class="margin-base-vertical">GitInsight (beta) : Have you ever wondered the future of your <span class="octicon octicon-logo-github"></span> contributions?</h1>
-<p>
-You can generate your next week prediction by entering your username down here.
-</p>
-<p>
-If you are curious about how does it works, <a href="https://github.com/mudler/GitInsight" target="_new">click here</a>
-</p>
-<p>
-I want to know, what i'll do the next week?
-</p>
-%= form_for 'predict', method => 'post' , class=> "margin-base-vertical", begin
+<div class="col-md-6 col-md-offset-3 panel panel-default" >
+  <h1 class="margin-base-vertical">GitInsight (beta) : Have you ever wondered the future of your <span class="octicon octicon-logo-github"></span> contributions?</h1>
+  <p>
+  You can generate your next week prediction by entering your username down here.
+  </p>
+  <p>
+  If you are curious about how does it works, <a href="https://github.com/mudler/GitInsight" target="_new">click here</a>
+  </p>
+  <p>
+  I want to know, what i'll do the next week?
+  </p>
+  %= form_for 'predict', method => 'post' , class=> "margin-base-vertical", begin
   <p class="input-group">
   <span class="input-group-addon"><span class="octicon octicon-octoface"></span></span>
   <input type="text" class="form-control input-lg" name="username" placeholder="github-username" />
   </p>
   <div class="col-md-12">
-  <div class="row">
-<div class="col-md-6 col-md-offset-3  panel " >
-<h2 class="margin-base-vertical">Advanced options</h2>
-<p>
-Those fields below are optional and changes your predictions </p>
-<!-- No days of the week checkbox -->
-<p class="input-group">
-
-    <label class="checkbox" for="checkboxes-0">
-      <input name="no_weekdays" id="checkboxes-0" value="No days of the week" type="checkbox">
-      No days of the week
-    </label>
-</p>
-
-<p>
-Use the slider below to select a range of dates to limit the prediction
-</p>
-<div class="col-md-12">
-<p class="input-group">
-  <!-- <span class="input-group-addon"><span class="glyphicon glyphicon-fast-backward"></span></span> -->
-    <input data-slider-id="GC" id="G"  type="text" class="span2 slider" value="" data-slider-min="0" data-slider-max="365" data-slider-step="1" data-slider-value="0,0" data-slider-orientation="horizontal" data-slider-selection="after"data-slider-tooltip="show" name="cutoff">
-  <!-- <span class="input-group-addon"><span class="glyphicon glyphicon-fast-forward"></span></span> -->
-</p>
-
-</div>
-
-  </div>
-  </div>
-  <div class="row">
-    <p class="help-block text-center"><small>No authentication requested. No special permissions, just your stats. </small></p>
-  <p class="text-center">
-  <button type="submit" class="btn btn-success btn-lg">Predict!</button>
-  </p>
-  </div>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3  panel " >
+        <h2 class="margin-base-vertical">Advanced options</h2>
+        <p>
+        Those fields below are optional and changes your predictions </p>
+        <!-- No days of the week checkbox -->
+        <p class="input-group">
+        <label class="checkbox" for="checkboxes-0">
+          <input name="no_weekdays" id="checkboxes-0" value="No days of the week" type="checkbox">
+          No days of the week
+        </label>
+        </p>
+        <p>
+        Use the slider below to select a range of dates to limit the prediction
+        </p>
+        <div class="col-md-12">
+          <p class="input-group">
+          <!-- <span class="input-group-addon"><span class="glyphicon glyphicon-fast-backward"></span></span> -->
+          <input data-slider-id="GC" id="G"  type="text" class="span2 slider" value="" data-slider-min="0" data-slider-max="365" data-slider-step="1" data-slider-value="0,0" data-slider-orientation="horizontal" data-slider-selection="after"data-slider-tooltip="show" name="cutoff">
+          <!-- <span class="input-group-addon"><span class="glyphicon glyphicon-fast-forward"></span></span> -->
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <p class="help-block text-center"><small>No authentication requested. No special permissions, just your stats. </small></p>
+      <p class="text-center">
+      <button type="submit" class="btn btn-success btn-lg">Predict!</button>
+      </p>
+    </div>
   </div>
   %end;
-  </div>
+</div>

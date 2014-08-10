@@ -83,3 +83,14 @@
 #GC .slider-handle {
   background: green;
 }
+.chart {
+  display: block;
+  margin: auto;
+  margin-top: 40px;
+}
+text {
+  font-size: 11px;
+}
+rect {
+  fill: none;
+}

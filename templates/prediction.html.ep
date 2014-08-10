@@ -2,19 +2,6 @@
 % title config('name'). ' - '.config('slogan').' ';
 % content_for head => begin
 <meta name="keywords" content="Index" />
-<style type="text/css">
-.chart {
-display: block;
-margin: auto;
-margin-top: 40px;
-}
-text {
-font-size: 11px;
-}
-rect {
-fill: none;
-}
-</style>
 % end
 % my @wday = qw/Mon Tue Wed Thu Fri Sat Sun/;
 <div class="col-md-12 panel panel-default" >
