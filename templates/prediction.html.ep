@@ -69,10 +69,13 @@
                 If you are curious about how does it works, <a href="https://github.com/mudler/GitInsight" target="_new">click here</a>
                 </p>
                 <p>
-                You can share your prediction, using this link : http://gitinsight.mudler.pm/predict/<%=stash('username')%>
+                <a href="http://song-of-github.herokuapp.com/?username=<%=stash('username')%>" target="_new">Want to hear your github song? </a> or... you want just an <a href="https://osrc.dfm.io/<%=stash('username')%>" target="_new">Open source Post Card</a>?
                 </p>
                 <p>
-                <a href="http://song-of-github.herokuapp.com/?username=<%=stash('username')%>" target="_new">Want to hear your github song? </a> or... you want just an <a href="https://osrc.dfm.io/<%=stash('username')%>" target="_new">Open source Post Card</a>?
+                <h2><strong>Share</strong> your prediction</h2>
+                <div class="clone-url ">
+                    <input class="input-mini input-monospace" value="http://gitinsight.mudler.pm/predict/<%=stash('username')%>" readonly="readonly" type="text">
+                </div>
                 </p>
                 % foreach my $prediction (@{stash('predictions')}){
                 <h1 class="margin-base-vertical">Prediction probability percentage for <%=$prediction->[0]%> (<%=$prediction->[2]%>)</h1>
