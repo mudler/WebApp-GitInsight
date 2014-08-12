@@ -23,6 +23,8 @@
             <p>
             The red border on the squares indicates your prediction of contributions for the next week
             </p>
+            <h2 class="clone-url "><strong>Share</strong> your prediction                         <input class="input-mini input-monospace" value="http://gitinsight.mudler.pm/predict/<%=stash('username')%>" readonly="readonly" type="text">
+            </h2>
             <div class="contrib-legend" title="A summary of pull requests, issues opened, and commits to the default and gh-pages branches.">
                 <span>Less</span>
                 <ul class="legend">
@@ -40,74 +42,95 @@
                     <a target="_new" href="/predict/img/<%=stash('username')%>.png">
                         <img src="/predict/img/<%=stash('username')%>.png" class="img-responsive">
                     </a>
-                </div></div>
-                <p>
-                <div class="col-md-12">
-                    <div class="row">
-                        % foreach my $l (sort {$a<=> $b} keys %{stash('labels')} ){
-                        % my $color= $l ==0 ? '#eee' : $l==1 ? '#d6e685' : $l==2? '#8cc665' : $l==3 ? '#44a340' : '#1e6823';
-                        <div class="contrib-legend">
-                            <ul class="legend">
-                                <li style="background-color: <%=$color%>"></li>
-                            </ul>
-                            %if($l==0) {
-                            <span><%=stash('labels')->{$l}%> contributions</span>
-                            % } elsif($l==4){
-                            <span>more than <%=stash('labels')->{$l}%> contributions</span>
-                            %} else {
-                            <span><%=stash('labels')->{$l}%> or less contributions</span>
-                            %}
-                        </div>
+                </div>
+            </div>
+            <p>
+            <div class="col-md-12">
+                <div class="row">
+                    % foreach my $l (sort {$a<=> $b} keys %{stash('labels')} ){
+                    % my $color= $l ==0 ? '#eee' : $l==1 ? '#d6e685' : $l==2? '#8cc665' : $l==3 ? '#44a340' : '#1e6823';
+                    <div class="contrib-legend">
+                        <ul class="legend">
+                            <li style="background-color: <%=$color%>"></li>
+                        </ul>
+                        %if($l==0) {
+                        <span><%=stash('labels')->{$l}%> contributions</span>
+                        % } elsif($l==4){
+                        <span>more than <%=stash('labels')->{$l}%> contributions</span>
+                        %} else {
+                        <span><%=stash('labels')->{$l}%> or less contributions</span>
                         %}
                     </div>
+                    %}
                 </div>
-                </p>
-                <p>
-                click on the image to enlarge
-                </p>
-                <p>
-                If you are curious about how does it works, <a href="https://github.com/mudler/GitInsight" target="_new">click here</a>
-                </p>
-                <p>
-                <a href="http://song-of-github.herokuapp.com/?username=<%=stash('username')%>" target="_new">Want to hear your github song? </a> or... you want just an <a href="https://osrc.dfm.io/<%=stash('username')%>" target="_new">Open source Post Card</a>?
-                </p>
-                <p>
-                <h2><strong>Share</strong> your prediction</h2>
-                <div class="clone-url ">
-                    <input class="input-mini input-monospace" value="http://gitinsight.mudler.pm/predict/<%=stash('username')%>" readonly="readonly" type="text">
-                </div>
-                </p>
-                % foreach my $prediction (@{stash('predictions')}){
-                <h1 class="margin-base-vertical">Prediction probability percentage for <%=$prediction->[0]%> (<%=$prediction->[2]%>)</h1>
-                <div class="col-md-12" >
-                    <div class="row">
-                        % for my $l(0..(scalar (@{$prediction->[3]}))-1){
-                        % #my $color= $l ==0 ? '#eee' : $l==1 ? '#d6e685' : $l==2? '#8cc665' : $l==3 ? '#44a340' : '#1e6823';
-                        % my $label =  ($l==0) ? stash('labels')->{$l}. " contributions " : ($l==4)?  stash('labels')->{$l}." or more" : stash('labels')->{$l}." or less contributions";
-                        %my $gauge=$prediction->[3]->[$l]*100 < 25 ? "progress-bar-info" : $prediction->[3]->[$l]*100 < 50 ? "progress-bar-info" : $prediction->[3]->[$l]*100  < 75 ? "progress-bar-warning" : "progress-bar-danger";
-                        <div class="col-md-12">
-                            <div class="col-md-3">
-                                <%=$label%>
+            </div>
+            </p>
+            <p>
+            click on the image to enlarge
+            </p>
+            <p>
+            If you are curious about how does it works, <a href="https://github.com/mudler/GitInsight" target="_new">click here</a>
+            </p>
+            <p>
+            <a href="http://song-of-github.herokuapp.com/?username=<%=stash('username')%>" target="_new">Want to hear your github song? </a> or... you want just an <a href="https://osrc.dfm.io/<%=stash('username')%>" target="_new">Open source Post Card</a>?
+            </p>
+            % foreach my $prediction (@{stash('predictions')}){
+            <h1 class="margin-base-vertical">Prediction probability percentage for <%=$prediction->[0]%> (<%=$prediction->[2]%>)</h1>
+            <div class="col-md-12" >
+                <div class="row">
+                    % for my $l(0..(scalar (@{$prediction->[3]}))-1){
+                    % #my $color= $l ==0 ? '#eee' : $l==1 ? '#d6e685' : $l==2? '#8cc665' : $l==3 ? '#44a340' : '#1e6823';
+                    % my $label =  ($l==0) ? stash('labels')->{$l}. " contributions " : ($l==4)?  stash('labels')->{$l}." or more" : stash('labels')->{$l}." or less contributions";
+                    %my $gauge=$prediction->[3]->[$l]*100 < 25 ? "progress-bar-info" : $prediction->[3]->[$l]*100 < 50 ? "progress-bar-info" : $prediction->[3]->[$l]*100  < 75 ? "progress-bar-warning" : "progress-bar-danger";
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <%=$label%>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="progress">
+                                <div class="progress-bar <%=$gauge%>" role="progressbar" data-transitiongoal="<%=$prediction->[3]->[$l]*100%>"></div>
                             </div>
-                            <div class="col-md-9">
-                                <div class="progress">
-                                    <div class="progress-bar <%=$gauge%>" role="progressbar" data-transitiongoal="<%=$prediction->[3]->[$l]*100%>"></div>
+                        </div>
+                    </div>
+                    %}
+                </div>
+            </div>
+            %}
+            % if(stash('no_weekdays')==1){
+            <h1 class="margin-base-vertical">Label frequency percentage</h1>
+            <div class="col-md-12" >
+                <div class="row">
+                    <div class="col-md-12">
+                        % foreach my $k (sort {$a<=> $b} keys %{stash('stats')}){
+                        % # my $color= $k ==0 ? '#eee' : $k==1 ? '#d6e685' : $k==2? '#8cc665' : $k==3 ? '#44a340' : '#1e6823';
+                        % my $label = ($k==0)? stash('labels')->{$k}. " contributions " : ($k==4) ?  stash('labels')->{$k}." or more" : stash('labels')->{$k}." or less contributions";
+                        %my $gauge=stash('stats')->{$k}*100 < 25 ? "progress-bar-info" : stash('stats')->{$k}*100 < 50 ? "progress-bar-info" : stash('stats')->{$k}*100  < 75 ? "progress-bar-warning" : "progress-bar-danger";
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-3">
+                                    <%=$label%>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="progress">
+                                        <div class="progress-bar <%=$gauge%>" role="progressbar" data-transitiongoal="<%=stash('stats')->{$k}*100%>"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         %}
                     </div>
-                </div>
-                %}
-                % if(stash('no_weekdays')==1){
-                <h1 class="margin-base-vertical">Label frequency percentage</h1>
+                </div>            </div>
+                %} else {
                 <div class="col-md-12" >
+                    % foreach my $k (@wday){
+                    <div class="row">
+                    <h1 class="margin-base-vertical">Label frequency percentage on <%=$k%></h1></div>
                     <div class="row">
                         <div class="col-md-12">
-                            % foreach my $k (sort {$a<=> $b} keys %{stash('stats')}){
-                            % # my $color= $k ==0 ? '#eee' : $k==1 ? '#d6e685' : $k==2? '#8cc665' : $k==3 ? '#44a340' : '#1e6823';
-                            % my $label = ($k==0)? stash('labels')->{$k}. " contributions " : ($k==4) ?  stash('labels')->{$k}." or more" : stash('labels')->{$k}." or less contributions";
-                            %my $gauge=stash('stats')->{$k}*100 < 25 ? "progress-bar-info" : stash('stats')->{$k}*100 < 50 ? "progress-bar-info" : stash('stats')->{$k}*100  < 75 ? "progress-bar-warning" : "progress-bar-danger";
+                            % foreach my $l (sort {$a<=> $b} keys %{stash('stats')->{$k}}){
+                            % #my $color= $l ==0 ? '#eee' : $l==1 ? '#d6e685' : $l==2? '#8cc665' : $l==3 ? '#44a340' : '#1e6823';
+                            % my $label =  ($l==0) ? stash('labels')->{$l}. " contributions " : ($l==4)?  stash('labels')->{$l}." or more" : stash('labels')->{$l}." or less contributions";
+                            %my $gauge=stash('stats')->{$k}->{$l}*100 < 25 ? "progress-bar-info" : stash('stats')->{$k}->{$l}*100 < 50 ? "progress-bar-info" : stash('stats')->{$k}->{$l}*100  < 75 ? "progress-bar-warning" : "progress-bar-danger";
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="col-md-3">
@@ -115,139 +138,113 @@
                                     </div>
                                     <div class="col-md-9">
                                         <div class="progress">
-                                            <div class="progress-bar <%=$gauge%>" role="progressbar" data-transitiongoal="<%=stash('stats')->{$k}*100%>"></div>
+                                            <div class="progress-bar <%=$gauge%>" role="progressbar" data-transitiongoal="<%=stash('stats')->{$k}->{$l}*100%>"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             %}
                         </div>
-                    </div>            </div>
-                    %} else {
-                    <div class="col-md-12" >
-                        % foreach my $k (@wday){
-                        <div class="row">
-                        <h1 class="margin-base-vertical">Label frequency percentage on <%=$k%></h1></div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                % foreach my $l (sort {$a<=> $b} keys %{stash('stats')->{$k}}){
-                                % #my $color= $l ==0 ? '#eee' : $l==1 ? '#d6e685' : $l==2? '#8cc665' : $l==3 ? '#44a340' : '#1e6823';
-                                % my $label =  ($l==0) ? stash('labels')->{$l}. " contributions " : ($l==4)?  stash('labels')->{$l}." or more" : stash('labels')->{$l}." or less contributions";
-                                %my $gauge=stash('stats')->{$k}->{$l}*100 < 25 ? "progress-bar-info" : stash('stats')->{$k}->{$l}*100 < 50 ? "progress-bar-info" : stash('stats')->{$k}->{$l}*100  < 75 ? "progress-bar-warning" : "progress-bar-danger";
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="col-md-3">
-                                            <%=$label%>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <div class="progress">
-                                                <div class="progress-bar <%=$gauge%>" role="progressbar" data-transitiongoal="<%=stash('stats')->{$k}->{$l}*100%>"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                %}
-                            </div>
-                        </div>
-                        %}
                     </div>
                     %}
-                    <br>
                 </div>
-            </div>
-            <div class="row">
-                <div id="treemap" class="col-md-12">
-                    <h1 class="margin-base-vertical">Treemap of probabilities</h1>
-                    <p>
-                    click or option-click to descend or ascend
-                    <select>
-                        <option value="size">Size</option>
-                        <option value="count">Count</option>
-                    </select>
-                    </p>
-                    <p>
-                    Click to zoom a region, the size of the blocks correspond to the associated "contribution label" probability to happen among the others, more big is the box, mostly is going to happen.
-                    </p>
-                </div>
-                <script>
-                var map = {};
-                map[0] = " no contributions";
-                map[1] = " some contributions";
-                map[2] = " medium contributions";
-                map[3] = " medium-high contributions";
-                map[4] = " strong contributions";
-                var w = 1024 - 80,
-                h = 768 - 180,
-                x = d3.scale.linear().range([0, w]),
-                y = d3.scale.linear().range([0, h]),
-                color = d3.scale.category20c(),
-                root,
-                node;
-                var treemap = d3.layout.treemap()
-                .round(false)
-                .size([w, h])
-                .sticky(true)
-                .value(function(d) { return d.size; });
-                var svg = d3.select("#treemap").append("div")
-                .attr("class", "chart")
-                .style("width", w + "px")
-                .style("height", h + "px")
-                .append("svg:svg")
-                .attr("width", w)
-                .attr("height", h)
-                .append("svg:g")
-                .attr("transform", "translate(.5,.5)");
-                d3.json("<%="/json/".stash('username')%>.json", function(data) {
-                node = root = data;
-                var nodes = treemap.nodes(root)
-                .filter(function(d) { return !d.children; });
-                var cell = svg.selectAll("g")
-                .data(nodes)
-                .enter().append("svg:g")
-                .attr("class", "cell")
-                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-                .on("click", function(d) { return zoom(node == d.parent ? root : d.parent); });
-                cell.append("svg:rect")
-                .attr("width", function(d) { return d.dx - 1; })
-                .attr("height", function(d) { return d.dy - 1; })
-                .style("fill", function(d) { return color(d.parent.name); });
-                cell.append("svg:text")
-                .attr("x", function(d) { return d.dx / 2; })
-                .attr("y", function(d) { return d.dy / 2; })
-                .attr("dy", ".35em")
-                .attr("text-anchor", "middle")
-                .text(function(d) { return d.parent.name+": "+map[d.name] ; })
-                .style("opacity", function(d) { d.w = this.getComputedTextLength(); return d.dx > d.w ? 1 : 0; });
-                d3.select(window).on("click", function() { zoom(root); });
-                d3.select("select").on("change", function() {
-                treemap.value(this.value == "size" ? size : count).nodes(root);
-                zoom(node);
-                });
-                });
-                function size(d) {
-                return d.size;
-                }
-                function count(d) {
-                return 1;
-                }
-                function zoom(d) {
-                var kx = w / d.dx, ky = h / d.dy;
-                x.domain([d.x, d.x + d.dx]);
-                y.domain([d.y, d.y + d.dy]);
-                var t = svg.selectAll("g.cell").transition()
-                .duration(d3.event.altKey ? 7500 : 750)
-                .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
-                t.select("rect")
-                .attr("width", function(d) { return kx * d.dx - 1; })
-                .attr("height", function(d) { return ky * d.dy - 1; })
-                t.select("text")
-                .attr("x", function(d) { return kx * d.dx / 2; })
-                .attr("y", function(d) { return ky * d.dy / 2; })
-                .style("opacity", function(d) { return kx * d.dx > d.w ? 1 : 0; });
-                node = d;
-                d3.event.stopPropagation();
-                }
-                </script>
+                %}
                 <br>
             </div>
         </div>
+        <div class="row">
+            <div id="treemap" class="col-md-12">
+                <h1 class="margin-base-vertical">Treemap of probabilities</h1>
+                <p>
+                click or option-click to descend or ascend
+                <select>
+                    <option value="size">Size</option>
+                    <option value="count">Count</option>
+                </select>
+                </p>
+                <p>
+                Click to zoom a region, the size of the blocks correspond to the associated "contribution label" probability to happen among the others, more big is the box, mostly is going to happen.
+                </p>
+            </div>
+            <script>
+            var map = {};
+            map[0] = " no contributions";
+            map[1] = " some contributions";
+            map[2] = " medium contributions";
+            map[3] = " medium-high contributions";
+            map[4] = " strong contributions";
+            var w = 1024 - 80,
+            h = 768 - 180,
+            x = d3.scale.linear().range([0, w]),
+            y = d3.scale.linear().range([0, h]),
+            color = d3.scale.category20c(),
+            root,
+            node;
+            var treemap = d3.layout.treemap()
+            .round(false)
+            .size([w, h])
+            .sticky(true)
+            .value(function(d) { return d.size; });
+            var svg = d3.select("#treemap").append("div")
+            .attr("class", "chart")
+            .style("width", w + "px")
+            .style("height", h + "px")
+            .append("svg:svg")
+            .attr("width", w)
+            .attr("height", h)
+            .append("svg:g")
+            .attr("transform", "translate(.5,.5)");
+            d3.json("<%="/json/".stash('username')%>.json", function(data) {
+            node = root = data;
+            var nodes = treemap.nodes(root)
+            .filter(function(d) { return !d.children; });
+            var cell = svg.selectAll("g")
+            .data(nodes)
+            .enter().append("svg:g")
+            .attr("class", "cell")
+            .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+            .on("click", function(d) { return zoom(node == d.parent ? root : d.parent); });
+            cell.append("svg:rect")
+            .attr("width", function(d) { return d.dx - 1; })
+            .attr("height", function(d) { return d.dy - 1; })
+            .style("fill", function(d) { return color(d.parent.name); });
+            cell.append("svg:text")
+            .attr("x", function(d) { return d.dx / 2; })
+            .attr("y", function(d) { return d.dy / 2; })
+            .attr("dy", ".35em")
+            .attr("text-anchor", "middle")
+            .text(function(d) { return d.parent.name+": "+map[d.name] ; })
+            .style("opacity", function(d) { d.w = this.getComputedTextLength(); return d.dx > d.w ? 1 : 0; });
+            d3.select(window).on("click", function() { zoom(root); });
+            d3.select("select").on("change", function() {
+            treemap.value(this.value == "size" ? size : count).nodes(root);
+            zoom(node);
+            });
+            });
+            function size(d) {
+            return d.size;
+            }
+            function count(d) {
+            return 1;
+            }
+            function zoom(d) {
+            var kx = w / d.dx, ky = h / d.dy;
+            x.domain([d.x, d.x + d.dx]);
+            y.domain([d.y, d.y + d.dy]);
+            var t = svg.selectAll("g.cell").transition()
+            .duration(d3.event.altKey ? 7500 : 750)
+            .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+            t.select("rect")
+            .attr("width", function(d) { return kx * d.dx - 1; })
+            .attr("height", function(d) { return ky * d.dy - 1; })
+            t.select("text")
+            .attr("x", function(d) { return kx * d.dx / 2; })
+            .attr("y", function(d) { return ky * d.dy / 2; })
+            .style("opacity", function(d) { return kx * d.dx > d.w ? 1 : 0; });
+            node = d;
+            d3.event.stopPropagation();
+            }
+            </script>
+            <br>
+        </div>
+    </div>
