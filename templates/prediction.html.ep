@@ -5,8 +5,19 @@
 % end
 % my @wday = qw/Mon Tue Wed Thu Fri Sat Sun/;
 <div class="col-md-12 panel panel-default" >
-    <h1 class="margin-base-vertical"><a href="<%=stash('profile_page')%>" target="_new"><img src="<%=stash('avatar')%>" width=130 class="img-responsive pull-right"></a>
+    <h1 class="margin-base-vertical">
     <span class="octicon octicon-logo-github"></span> <a href="<%=stash('profile_page')%>" target="_new"> <%=stash('username')%></a>'s contributions prediction</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <h2 class="clone-url "><strong>Share</strong> your prediction                         <input class="input-mini input-monospace" value="http://gitinsight.mudler.pm/predict/<%=stash('username')%>" readonly="readonly" type="text">
+                </h2>
+            </div>
+            <div class="col-md-6">
+                <a href="<%=stash('profile_page')%>" target="_new"><img src="<%=stash('avatar')%>" width=130 class="img-responsive pull-right"></a>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <p>
@@ -23,8 +34,6 @@
             <p>
             The red border on the squares indicates your prediction of contributions for the next week
             </p>
-            <h2 class="clone-url "><strong>Share</strong> your prediction                         <input class="input-mini input-monospace" value="http://gitinsight.mudler.pm/predict/<%=stash('username')%>" readonly="readonly" type="text">
-            </h2>
             <div class="contrib-legend" title="A summary of pull requests, issues opened, and commits to the default and gh-pages branches.">
                 <span>Less</span>
                 <ul class="legend">
