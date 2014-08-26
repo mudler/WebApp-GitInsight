@@ -7,15 +7,13 @@ use JSON;
 sub insight {
     my $self     = shift;
     my $username = $self->param("username");
-    my ($left_cutoff,$right_cutoff) =split(/,/,$self->param("cutoff")|| "0,0");
-    $right_cutoff=$right_cutoff-$left_cutoff;
-    my $wd       = 0;
+    my ( $left_cutoff, $right_cutoff )
+        = split( /,/, $self->param("cutoff") || "0,0" );
+    $right_cutoff = $right_cutoff - $left_cutoff;
+    my $wd = 0;
     $wd = 1 if $self->param("no_weekdays");
-    my $Insight = $self->app->insight(
-        $username, $wd,
-        $left_cutoff,
-        $right_cutoff
-    );
+    my $Insight
+        = $self->app->insight( $username, $wd, $left_cutoff, $right_cutoff );
 
     my $user_data = decode_json $self->ua->get(
         "https://api.github.com/users/" . $username )->res->body;
@@ -28,7 +26,8 @@ sub insight {
         avatar           => $user_data->{avatar_url},
         stats            => $Insight->{stats},
         labels           => $Insight->{steps},
-        predictions => $Insight->{result},
+        predictions      => $Insight->{result},
+        accuracy         => sprintf( "%.5f", $Insight->{accuracy} * 100 ),
         prediction_start => $Insight->prediction_start_day,
         no_weekdays      => $wd
     );

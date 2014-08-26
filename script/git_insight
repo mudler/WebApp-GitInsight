@@ -14,7 +14,7 @@ Please visit http://mojolicio.us for detailed installation instructions.
 EOF
 
 # Application
-$ENV{MOJO_APP} ||= 'WebApp';
+$ENV{MOJO_APP} ||= 'WebApp::GitInsight';
 
 # Start commands
-Mojolicious::Commands->start_app('WebApp');
+Mojolicious::Commands->start_app('WebApp::GitInsight');

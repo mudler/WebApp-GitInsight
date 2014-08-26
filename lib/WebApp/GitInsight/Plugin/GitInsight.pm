@@ -13,6 +13,8 @@ sub register {
             shift;
             $_[0] ||= "mudler";
             my $Insight = GitInsight->new(
+                verbose      => 0,
+                accuracy     => 1,
                 file_output  => 'public/pred/' . $_[0],
                 no_day_stats => $_[1] |=
                     0,
