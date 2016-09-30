@@ -7,7 +7,6 @@ use Mojo::Loader;
 use IO::Compress::Gzip 'gzip';
 use Mojolicious::Plugin::BootstrapAlerts;
 use Mojolicious::Plugin::StaticCompressor;
-use Mojolicious::Plugin::Bootstrap3;
 use Mojolicious::Plugin::AssetPack;
 
 sub startup {
@@ -18,7 +17,6 @@ sub startup {
     $app->plugin('StaticCompressor');
     $app->plugin('AssetPack');
     $app->plugin("BootstrapAlerts");
-    $app->plugin("bootstrap3");
 
     my $insight_dir
         = $app->config('insight_dir')
@@ -30,6 +28,15 @@ sub startup {
 
     ################# Assets definitions
     # script.js and extern.js are bundled in the app.js asset
+    
+ 
+  $self->asset->process(
+    "bootstrap.css" => "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+  );
+  $self->asset->process(
+    "bootstrap.js" => "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js");
+  );
+  
     $app->asset(
         'libs.js' => 'http://d3js.org/d3.v3.min.js',
         'http://code.jquery.com/jquery-2.1.1.min.js',
