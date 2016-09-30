@@ -30,10 +30,10 @@ sub startup {
     # script.js and extern.js are bundled in the app.js asset
     
  
-  $self->asset->process(
+  $app->asset->process(
     "bootstrap.css" => "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
   );
-  $self->asset->process(
+  $app->asset->process(
     "bootstrap.js" => "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js");
   );
   
