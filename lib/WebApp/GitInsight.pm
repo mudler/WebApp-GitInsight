@@ -35,7 +35,6 @@ sub startup {
   );
   $app->asset->process(
     "bootstrap.js" => "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js");
-  );
   
     $app->asset(
         'libs.js' => 'http://d3js.org/d3.v3.min.js',
